@@ -1,0 +1,38 @@
+.button {
+    display: inline-flex;
+    min-height: 54px;
+    padding: 0 34px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid currentColor;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.375;
+    letter-spacing: 0.02em;
+    text-align: center;
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease;
+}
+
+.light {
+    color: var(--color-white);
+    background: transparent;
+}
+
+.light:hover {
+    color: var(--color-accent);
+}
+
+.dark {
+    color: var(--color-accent);
+    background: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.dark:hover {
+    color: var(--color-dark);
+    background: transparent;
+}
