@@ -14,6 +14,23 @@ export const Header = () => {
         return () => document.body.classList.remove("is-menu-open");
     }, [isMenuOpen]);
 
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+        const closeMenuOnDesktop = () => {
+            if (mediaQuery.matches) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        closeMenuOnDesktop();
+        mediaQuery.addEventListener("change", closeMenuOnDesktop);
+
+        return () => {
+            mediaQuery.removeEventListener("change", closeMenuOnDesktop);
+        };
+    }, []);
+
     return (
         <header className={styles.siteHeader}>
             <div className={styles.inner}>
@@ -22,7 +39,7 @@ export const Header = () => {
                     href="#hero"
                     aria-label="White Frame"
                 >
-                    <img src="/logo.svg" width="220" height="31" alt="" />
+                    <img src="/logo.svg" alt="" />
                 </a>
 
                 <nav className={styles.nav} aria-label="Основная навигация">
@@ -62,7 +79,7 @@ export const Header = () => {
                     aria-label="Открыть меню"
                     onClick={() => setIsMenuOpen(true)}
                 >
-                    <img src="/menu-icon.svg" width="30" height="13" alt="" />
+                    <img src="/menu-icon.svg" alt="" />
                 </button>
             </div>
 
@@ -73,7 +90,7 @@ export const Header = () => {
                     aria-label="Закрыть меню"
                     onClick={() => setIsMenuOpen(false)}
                 >
-                    <img src="/close-icon.svg" width="20" height="20" alt="" />
+                    <img src="/close-icon.svg" alt="" />
                 </button>
 
                 <div className={styles.mobileMenuBody}>
@@ -136,42 +153,22 @@ export const Header = () => {
                     >
                         <li>
                             <a href="/" aria-label="Instagram">
-                                <img
-                                    src="/instagram.svg"
-                                    width="24"
-                                    height="24"
-                                    alt=""
-                                />
+                                <img src="/instagram.svg" alt="" />
                             </a>
                         </li>
                         <li>
                             <a href="/" aria-label="VK">
-                                <img
-                                    src="/vk.svg"
-                                    width="24"
-                                    height="24"
-                                    alt=""
-                                />
+                                <img src="/vk.svg" alt="" />
                             </a>
                         </li>
                         <li>
                             <a href="/" aria-label="Facebook">
-                                <img
-                                    src="/facebook.svg"
-                                    width="24"
-                                    height="24"
-                                    alt=""
-                                />
+                                <img src="/facebook.svg" alt="" />
                             </a>
                         </li>
                         <li>
                             <a href="/" aria-label="Google Play">
-                                <img
-                                    src="/google-play.svg"
-                                    width="24"
-                                    height="24"
-                                    alt=""
-                                />
+                                <img src="/google-play.svg" alt="" />
                             </a>
                         </li>
                     </ul>

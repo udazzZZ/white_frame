@@ -1,4 +1,5 @@
 import { Header } from "../components/Header/Header";
+import { HeroSection } from "../components/HeroSection/HeroSection";
 import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
@@ -7,15 +8,7 @@ export const HomePage = () => {
             <Header />
 
             <main className={styles.main}>
-                <section
-                    className={styles.heroSection}
-                    id="hero"
-                    aria-label="Главная"
-                >
-                    <div className={styles.heroInner}>
-                        <h1>Цифровые решения для бизнеса и государства</h1>
-                    </div>
-                </section>
+                <HeroSection />
             </main>
         </div>
     );

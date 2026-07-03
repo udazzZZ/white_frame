@@ -12,6 +12,7 @@
     width: min(100% - 240px, var(--container-width));
     min-height: 37px;
     margin: 0 auto;
+    gap: 190px;
 }
 
 .logo {
@@ -21,26 +22,17 @@
     height: 31px;
 }
 
-.logo img {
-    width: 100%;
-    height: auto;
-}
-
 .nav {
     display: flex;
     flex: 1 1 auto;
     align-items: flex-start;
-    margin-left: 190px;
+    gap: 190px;
 }
 
 .navGroup {
     display: flex;
     align-items: flex-start;
     gap: 30px;
-}
-
-.navGroupRight {
-    margin-left: auto;
 }
 
 .link {
@@ -85,12 +77,6 @@
     display: none;
 }
 
-.menuButton img,
-.mobileMenuClose img {
-    width: 100%;
-    height: auto;
-}
-
 .mobileMenu {
     position: fixed;
     inset: 0;
@@ -105,8 +91,6 @@
 
 .mobileMenuClose {
     align-self: flex-end;
-    width: 20px;
-    height: 20px;
 }
 
 .mobileMenuBody {
@@ -154,15 +138,8 @@
 
 .mobileMenuSocial a {
     display: grid;
-    width: 24px;
-    height: 24px;
     place-items: center;
     color: var(--color-dark);
-}
-
-.mobileMenuSocial img {
-    width: 24px;
-    height: 24px;
 }
 
 .mobileMenuOpen {
@@ -173,10 +150,11 @@
 @media (max-width: 1024px) {
     .inner {
         width: min(100% - 40px, var(--container-width));
+        gap: 80px;
     }
 
     .nav {
-        margin-left: 80px;
+        gap: 80px;
     }
 }
 
@@ -209,4 +187,3 @@
         margin-left: auto;
     }
 }
-
