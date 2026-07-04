@@ -1,0 +1,158 @@
+.casesSection {
+    width: min(100% - 40px, var(--container-width));
+    height: calc(620px + var(--scroll-distance, 0px));
+    margin: 120px auto 0;
+    overflow: visible;
+}
+
+.stickyContent {
+    position: sticky;
+    top: 120px;
+    overflow: visible;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 790px);
+    gap: 370px;
+    align-items: end;
+}
+
+.progress {
+    position: relative;
+    height: 20px;
+    background: var(--color-black);
+    --progress: 0;
+}
+
+.progress img {
+    position: absolute;
+    top: 0;
+    left: calc((100% - 20px) * var(--progress));
+    width: 20px;
+    height: 20px;
+    transition: left 220ms ease-out;
+}
+
+.sliderWrap {
+    width: calc(
+        100vw - max(
+                var(--container-padding),
+                calc((100vw - var(--container-width)) / 2)
+            )
+    );
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.slider {
+    overflow: visible;
+}
+
+.slide {
+    width: 380px;
+}
+
+.caseCard {
+    color: var(--color-white);
+    cursor:
+        url("/cursor.svg") 4 4,
+        pointer;
+}
+
+.caseCard img {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    transition:
+        filter 180ms ease,
+        opacity 180ms ease;
+}
+
+.caseCard h2 {
+    max-width: 330px;
+    margin: 20px 0 0;
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.35;
+    transition: color 180ms ease;
+}
+
+.slider:hover .caseCard img {
+    filter: grayscale(1) blur(3px);
+    opacity: 0.7;
+}
+
+.slider:hover .caseCard h2 {
+    color: var(--color-white);
+}
+
+.slide:hover .caseCard img {
+    filter: none;
+    opacity: 1;
+}
+
+.slide:hover .caseCard h2 {
+    color: var(--color-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 120px;
+    }
+
+    .sliderWrap {
+        width: calc(100vw - 20px);
+    }
+}
+
+@media (max-width: 767px) {
+    .casesSection {
+        width: min(100% - 40px, 335px);
+        height: auto;
+        margin-top: 80px;
+    }
+
+    .stickyContent {
+        position: static;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .sliderWrap {
+        width: 100%;
+        margin-top: 0;
+        overflow: visible;
+    }
+
+    .slide {
+        width: 300px;
+    }
+
+    .caseCard img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .caseCard h2 {
+        max-width: 335px;
+        font-size: 16px;
+    }
+
+    .slider:hover .caseCard img,
+    .slide:hover .caseCard img {
+        filter: none;
+        opacity: 1;
+    }
+
+    .slide:hover .caseCard h2 {
+        color: var(--color-white);
+        text-decoration: none;
+    }
+}
