@@ -3,6 +3,7 @@ import { HeroSection } from "../components/HeroSection/HeroSection";
 import { ServicesSection } from "../components/ServicesSection/ServicesSection";
 import { CasesSection } from "../components/CasesSection/CasesSection";
 import { AboutSection } from "../components/AboutSection/AboutSection";
+import { GallerySection } from "../components/GallerySection/GallerySection";
 import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
@@ -15,6 +16,7 @@ export const HomePage = () => {
                 <ServicesSection />
                 <CasesSection />
                 <AboutSection />
+                <GallerySection />
             </main>
         </div>
     );
