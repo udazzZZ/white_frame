@@ -9,7 +9,7 @@
 
 .backgroundShape {
     position: absolute;
-    top: 30px;
+    top: -90px;
     right: -120px;
     z-index: 0;
     min-width: 742px;
@@ -19,12 +19,16 @@
 
 .pixelsDown {
     position: absolute;
-    bottom: 0;
-    left: 428px;
+    left: 308px;
+    bottom: -120px;
     z-index: 0;
     min-width: 240px;
     height: auto;
     pointer-events: none;
+}
+
+.innerBackground {
+    width: var(--container-width);
 }
 
 .inner {

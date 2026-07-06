@@ -3,20 +3,19 @@ import styles from "./AboutSection.module.scss";
 export const AboutSection = () => {
     return (
         <section className={styles.aboutSection}>
-            <img
-                className={styles.backgroundShape}
-                src="/about-bg.png"
-                alt=""
-                aria-hidden="true"
-            />
-            <img
-                className={styles.pixelsDown}
-                src="/about-pixels-down.svg"
-                alt=""
-                aria-hidden="true"
-            />
-
             <div className={styles.inner}>
+                <img
+                    className={styles.backgroundShape}
+                    src="/about-bg.png"
+                    alt=""
+                    aria-hidden="true"
+                />
+                <img
+                    className={styles.pixelsDown}
+                    src="/about-pixels-down.svg"
+                    alt=""
+                    aria-hidden="true"
+                />
                 <p className={styles.lead}>
                     Мы много лет работаем в&#160;области IT-разработки,
                     самосовершенствуемся и&#160;двигаемся вперёд.
