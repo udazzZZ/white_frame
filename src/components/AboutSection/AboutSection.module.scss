@@ -1,7 +1,8 @@
 .aboutSection {
     position: relative;
-    width: min(100% - 40px, var(--container-width));
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     padding: 120px 0;
     overflow: visible;
 }
@@ -19,18 +20,19 @@
 .pixelsDown {
     position: absolute;
     bottom: 0;
-    left: 308px;
+    left: 428px;
     z-index: 0;
-    width: 234px;
+    min-width: 240px;
     height: auto;
     pointer-events: none;
 }
 
 .inner {
     position: relative;
+    width: min(100% - 40px, var(--container-width));
     z-index: 1;
     display: grid;
-    grid-template-columns: 380px 585px;
+    grid-template-columns: minmax(0, 380px) minmax(0, 585px);
     gap: 133px;
 }
 
@@ -76,10 +78,6 @@
 }
 
 @media (max-width: 767px) {
-    .aboutSection {
-        width: min(100% - 40px, 335px);
-    }
-
     .backgroundShape {
         top: 80px;
         left: -20px;
