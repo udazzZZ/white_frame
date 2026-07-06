@@ -1,14 +1,12 @@
 .casesSection {
+    position: relative;
     width: min(100% - 40px, var(--container-width));
-    height: calc(620px + var(--scroll-distance, 0px));
     margin: 120px auto 0;
     overflow: visible;
 }
 
-.stickyContent {
-    position: sticky;
-    top: 120px;
-    overflow: visible;
+.pixelsDown {
+    display: none;
 }
 
 .header {
@@ -113,21 +111,28 @@
 @media (max-width: 767px) {
     .casesSection {
         width: min(100% - 40px, 335px);
-        height: auto;
-        margin-top: 80px;
+        margin-top: 120px;
     }
 
-    .stickyContent {
-        position: static;
+    .pixelsDown {
+        position: absolute;
+        bottom: -57px;
+        left: min(-20px, calc((335px - 100vw) / 2));
+        display: block;
+        width: 120px;
+        height: auto;
+        pointer-events: none;
     }
 
     .header {
-        display: none;
+        display: grid;
+        gap: 21px;
+        align-items: end;
     }
 
     .sliderWrap {
         width: 100%;
-        margin-top: 0;
+        margin-top: 20px;
         overflow: visible;
     }
 

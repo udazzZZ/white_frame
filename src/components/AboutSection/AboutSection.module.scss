@@ -1,9 +1,34 @@
 .aboutSection {
+    position: relative;
     width: min(100% - 40px, var(--container-width));
-    margin: 120px auto 0;
+    margin: 0 auto;
+    padding: 120px 0;
+    overflow: visible;
+}
+
+.backgroundShape {
+    position: absolute;
+    top: 30px;
+    right: -120px;
+    z-index: 0;
+    min-width: 742px;
+    height: auto;
+    pointer-events: none;
+}
+
+.pixelsDown {
+    position: absolute;
+    bottom: 0;
+    left: 308px;
+    z-index: 0;
+    width: 234px;
+    height: auto;
+    pointer-events: none;
 }
 
 .inner {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 380px 585px;
     gap: 133px;
@@ -34,6 +59,16 @@
 }
 
 @media (max-width: 1024px) {
+    .backgroundShape {
+        top: 140px;
+        right: -170px;
+    }
+
+    .pixelsDown {
+        right: 0;
+        left: auto;
+    }
+
     .inner {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -43,11 +78,14 @@
 @media (max-width: 767px) {
     .aboutSection {
         width: min(100% - 40px, 335px);
-        margin-top: 80px;
     }
 
-    .lead {
-        font-size: 20px;
-        line-height: 1.35;
+    .backgroundShape {
+        top: 80px;
+        left: -20px;
+    }
+
+    .pixelsDown {
+        display: none;
     }
 }

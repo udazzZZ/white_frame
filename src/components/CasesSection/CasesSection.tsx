@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -44,14 +44,49 @@ type ProgressStyle = CSSProperties & {
 };
 
 export const CasesSection = () => {
+    const progressRef = useRef<HTMLDivElement | null>(null);
+    const sliderWrapRef = useRef<HTMLDivElement | null>(null);
     const [sliderProgress, setSliderProgress] = useState(0);
+    const [slidesOffsetAfter, setSlidesOffsetAfter] = useState(0);
+
+    useEffect(() => {
+        const updateSlidesOffset = () => {
+            const progress = progressRef.current;
+            const sliderWrap = sliderWrapRef.current;
+
+            if (!progress || !sliderWrap) {
+                return;
+            }
+
+            const progressRect = progress.getBoundingClientRect();
+            const sliderWrapRect = sliderWrap.getBoundingClientRect();
+            const offset = sliderWrapRect.right - progressRect.right;
+
+            setSlidesOffsetAfter(Math.max(Math.round(offset), 0));
+        };
+
+        updateSlidesOffset();
+        window.addEventListener("resize", updateSlidesOffset);
+
+        return () => {
+            window.removeEventListener("resize", updateSlidesOffset);
+        };
+    }, []);
 
     return (
         <section className={styles.casesSection} id="cases">
+            <img
+                className={styles.pixelsDown}
+                src="/about-pixels-down.svg"
+                alt=""
+                aria-hidden="true"
+            />
+
             <div className={styles.header}>
                 <img src="/folder-icon.svg" alt="" />
                 <div
                     className={styles.progress}
+                    ref={progressRef}
                     style={{ "--progress": sliderProgress } as ProgressStyle}
                     aria-hidden="true"
                 >
@@ -59,13 +94,14 @@ export const CasesSection = () => {
                 </div>
             </div>
 
-            <div className={styles.sliderWrap}>
+            <div className={styles.sliderWrap} ref={sliderWrapRef}>
                 <Swiper
+                    key={slidesOffsetAfter}
                     modules={[Mousewheel, FreeMode]}
                     className={styles.slider}
                     slidesPerView="auto"
                     spaceBetween={30}
-                    slidesOffsetAfter={88}
+                    slidesOffsetAfter={slidesOffsetAfter}
                     freeMode={{
                         enabled: true,
                         momentum: true,

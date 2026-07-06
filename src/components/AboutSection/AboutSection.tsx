@@ -3,14 +3,27 @@ import styles from "./AboutSection.module.scss";
 export const AboutSection = () => {
     return (
         <section className={styles.aboutSection}>
+            <img
+                className={styles.backgroundShape}
+                src="/about-bg.png"
+                alt=""
+                aria-hidden="true"
+            />
+            <img
+                className={styles.pixelsDown}
+                src="/about-pixels-down.svg"
+                alt=""
+                aria-hidden="true"
+            />
+
             <div className={styles.inner}>
                 <p className={styles.lead}>
-                    Мы много лет работаем в области IT-разработки,
-                    самосовершенствуемся и двигаемся вперёд.
+                    Мы много лет работаем в&#160;области IT-разработки,
+                    самосовершенствуемся и&#160;двигаемся вперёд.
                     <br />
                     <br />
-                    Мы стараемся жить вне рамок существующих парадигм и
-                    ограничений.
+                    Мы стараемся жить вне рамок&#160;существующих парадигм
+                    и&#160;ограничений.
                 </p>
 
                 <div className={styles.text}>
@@ -30,8 +43,8 @@ export const AboutSection = () => {
                         технологии разработки.
                     </p>
                     <p>
-                        Обращаясь в White Frame для разработки или продвижения IT
-                        продукта, вы освобождаетесь от лишних переживаний по
+                        Обращаясь в White Frame для разработки или продвижения
+                        IT продукта, вы освобождаетесь от лишних переживаний по
                         поводу целесообразности потраченных средств, поскольку
                         получаете чёткое представление о каждом этапе
                         сотрудничества.

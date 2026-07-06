@@ -49,7 +49,7 @@ export const HeroSection = () => {
             <div className={styles.heroInner}>
                 <div className={styles.offer}>
                     <h1 className={styles.title}>
-                        Цифровые решения для бизнеса и государства
+                        Цифровые решения для&#160;бизнеса и государства
                     </h1>
 
                     <div className={styles.offerActions}>
