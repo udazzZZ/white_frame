@@ -27,10 +27,6 @@
     pointer-events: none;
 }
 
-.innerBackground {
-    width: var(--container-width);
-}
-
 .inner {
     position: relative;
     width: min(100% - 40px, var(--container-width));

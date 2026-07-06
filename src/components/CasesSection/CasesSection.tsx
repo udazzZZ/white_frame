@@ -82,51 +82,57 @@ export const CasesSection = () => {
                 aria-hidden="true"
             />
 
-            <div className={styles.header}>
-                <img src="/folder-icon.svg" alt="" />
-                <div
-                    className={styles.progress}
-                    ref={progressRef}
-                    style={{ "--progress": sliderProgress } as ProgressStyle}
-                    aria-hidden="true"
-                >
-                    <img src="/progress-icon.svg" alt="" />
+            <div className={styles.casesInner}>
+                <div className={styles.header}>
+                    <img src="/folder-icon.svg" alt="" />
+                    <div
+                        className={styles.progress}
+                        ref={progressRef}
+                        style={
+                            { "--progress": sliderProgress } as ProgressStyle
+                        }
+                        aria-hidden="true"
+                    >
+                        <img src="/progress-icon.svg" alt="" />
+                    </div>
                 </div>
-            </div>
 
-            <div className={styles.sliderWrap} ref={sliderWrapRef}>
-                <Swiper
-                    key={slidesOffsetAfter}
-                    modules={[Mousewheel, FreeMode]}
-                    className={styles.slider}
-                    slidesPerView="auto"
-                    spaceBetween={30}
-                    slidesOffsetAfter={slidesOffsetAfter}
-                    freeMode={{
-                        enabled: true,
-                        momentum: true,
-                        momentumRatio: 0.7,
-                    }}
-                    mousewheel={{
-                        enabled: true,
-                        forceToAxis: false,
-                        releaseOnEdges: true,
-                        sensitivity: 0.7,
-                    }}
-                    onProgress={(_, progress) => setSliderProgress(progress)}
-                >
-                    {cases.map((item, index) => (
-                        <SwiperSlide
-                            className={styles.slide}
-                            key={`${item.image}-${index}`}
-                        >
-                            <article className={styles.caseCard}>
-                                <img src={item.image} alt="" />
-                                <h2>{item.title}</h2>
-                            </article>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <div className={styles.sliderWrap} ref={sliderWrapRef}>
+                    <Swiper
+                        key={slidesOffsetAfter}
+                        modules={[Mousewheel, FreeMode]}
+                        className={styles.slider}
+                        slidesPerView="auto"
+                        spaceBetween={30}
+                        slidesOffsetAfter={slidesOffsetAfter}
+                        freeMode={{
+                            enabled: true,
+                            momentum: true,
+                            momentumRatio: 0.7,
+                        }}
+                        mousewheel={{
+                            enabled: true,
+                            forceToAxis: false,
+                            releaseOnEdges: true,
+                            sensitivity: 0.7,
+                        }}
+                        onProgress={(_, progress) =>
+                            setSliderProgress(progress)
+                        }
+                    >
+                        {cases.map((item, index) => (
+                            <SwiperSlide
+                                className={styles.slide}
+                                key={`${item.image}-${index}`}
+                            >
+                                <article className={styles.caseCard}>
+                                    <img src={item.image} alt="" />
+                                    <h2>{item.title}</h2>
+                                </article>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
         </section>
     );
