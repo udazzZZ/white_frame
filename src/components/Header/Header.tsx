@@ -14,23 +14,6 @@ export const Header = () => {
         return () => document.body.classList.remove("is-menu-open");
     }, [isMenuOpen]);
 
-    useEffect(() => {
-        const mediaQuery = window.matchMedia("(min-width: 768px)");
-
-        const closeMenuOnDesktop = () => {
-            if (mediaQuery.matches) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        closeMenuOnDesktop();
-        mediaQuery.addEventListener("change", closeMenuOnDesktop);
-
-        return () => {
-            mediaQuery.removeEventListener("change", closeMenuOnDesktop);
-        };
-    }, []);
-
     return (
         <header className={styles.siteHeader}>
             <div className={styles.inner}>
@@ -42,34 +25,28 @@ export const Header = () => {
                     <img src="/logo.svg" alt="" />
                 </a>
 
-                <nav className={styles.nav} aria-label="Основная навигация">
-                    <div className={styles.navGroup}>
-                        <a
-                            className={styles.link}
-                            data-active="true"
-                            href="#hero"
-                        >
-                            Главная
-                        </a>
-                        <a className={styles.link} href="#cases">
-                            Кейсы
-                        </a>
-                        <a className={styles.link} href="#services">
-                            Услуги
-                        </a>
-                    </div>
-                    <div className={navGroupRightClassName}>
-                        <a className={styles.link} href="#contacts">
-                            Контакты
-                        </a>
-                        <a className={styles.link} href="#vacancies">
-                            Вакансии
-                        </a>
-                        <a className={styles.link} href="#news">
-                            Новости
-                        </a>
-                    </div>
-                </nav>
+                <div className={styles.navGroup}>
+                    <a className={styles.link} data-active="true" href="#hero">
+                        Главная
+                    </a>
+                    <a className={styles.link} href="#cases">
+                        Кейсы
+                    </a>
+                    <a className={styles.link} href="#services">
+                        Услуги
+                    </a>
+                </div>
+                <div className={navGroupRightClassName}>
+                    <a className={styles.link} href="#contacts">
+                        Контакты
+                    </a>
+                    <a className={styles.link} href="#vacancies">
+                        Вакансии
+                    </a>
+                    <a className={styles.link} href="#news">
+                        Новости
+                    </a>
+                </div>
 
                 <button
                     className={styles.menuButton}
