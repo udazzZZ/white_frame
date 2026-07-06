@@ -156,16 +156,13 @@
 
 @media (max-width: 767px) {
     .inner {
-        width: 335px;
         padding-top: 50px;
-        min-height: 18px;
-        align-items: flex-start;
     }
 
     .logo {
         width: 130px;
         min-width: 130px;
-        height: 18px;
+        height: auto;
     }
 
     .navGroup {

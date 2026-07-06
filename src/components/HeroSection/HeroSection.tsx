@@ -39,14 +39,14 @@ export const HeroSection = () => {
                     alt=""
                     aria-hidden="true"
                 />
+            </div>
+
+            <div className={styles.heroInner}>
                 <ul className={styles.backgroundServices} aria-hidden="true">
                     {backgroundServices.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
                 </ul>
-            </div>
-
-            <div className={styles.heroInner}>
                 <div className={styles.offer}>
                     <h1 className={styles.title}>
                         Цифровые решения для&#160;бизнеса и государства

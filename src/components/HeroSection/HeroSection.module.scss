@@ -1,6 +1,9 @@
 .heroSection {
     position: relative;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
+    width: 100;
 }
 
 .background {
@@ -33,12 +36,10 @@
 .backgroundServices {
     position: absolute;
     top: 120px;
-    right: 224px;
+    right: 104px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 0;
-    padding: 0;
     color: var(--color-blue);
     font-size: 72px;
     font-weight: 100;
@@ -46,24 +47,25 @@
     letter-spacing: 0.02em;
     list-style: none;
     opacity: 0.3;
+    z-index: 0;
 }
 
 .heroInner {
     position: relative;
     z-index: 1;
     width: min(100% - 40px, var(--container-width));
-    margin: 0 auto;
     padding-top: 257px;
     padding-bottom: 120px;
 }
 
 .title {
+    position: relative;
     max-width: 688px;
-    margin: 0;
     color: var(--color-white);
     font-size: 50px;
     font-weight: 600;
     line-height: 1.36;
+    z-index: 10;
 }
 
 .offerActions {
@@ -94,6 +96,7 @@
 }
 
 .card {
+    position: relative;
     display: grid;
     grid-template-columns: 4px minmax(0, 1fr);
     min-height: 100px;
@@ -120,14 +123,9 @@
     line-height: 1.375;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1024px) {
     .backgroundServices {
-        right: 40px;
-        font-size: 56px;
-    }
-
-    .cards {
-        gap: 24px;
+        display: none;
     }
 }
 
@@ -152,13 +150,11 @@
     }
 
     .heroInner {
-        width: min(100% - 40px, 335px);
         padding-top: 188px;
         padding-bottom: 120px;
     }
 
     .title {
-        max-width: 285px;
         font-size: 40px;
         line-height: 1.35;
     }
