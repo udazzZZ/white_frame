@@ -4,6 +4,7 @@ import { ServicesSection } from "../components/ServicesSection/ServicesSection";
 import { CasesSection } from "../components/CasesSection/CasesSection";
 import { AboutSection } from "../components/AboutSection/AboutSection";
 import { GallerySection } from "../components/GallerySection/GallerySection";
+import { NewsSection } from "../components/NewsSection/NewsSection";
 import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
@@ -17,6 +18,7 @@ export const HomePage = () => {
                 <CasesSection />
                 <AboutSection />
                 <GallerySection />
+                <NewsSection />
             </main>
         </div>
     );
