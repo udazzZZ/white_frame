@@ -1,0 +1,178 @@
+.siteFooter {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: min(100% - 40px, var(--container-width));
+    padding: 0 0 120px;
+    grid-template-columns: 50px 1fr auto;
+    grid-template-areas:
+        "logo nav social"
+        ". contacts copy";
+    column-gap: 30px;
+    row-gap: 60px;
+}
+
+.pixelsFooter {
+    position: absolute;
+    right: 242px;
+    bottom: 0;
+    width: 240px;
+    height: auto;
+    z-index: 0;
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+    grid-area: logo;
+    align-self: center;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    grid-area: nav;
+}
+
+.link {
+    position: relative;
+    display: inline-flex;
+    padding-bottom: 5px;
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    transition: color var(--duration-base, 180ms) ease;
+}
+
+.link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: currentColor;
+    content: "";
+    opacity: 0;
+    transition: opacity var(--duration-base, 180ms) ease;
+}
+
+.link[data-active="true"] {
+    color: var(--color-accent);
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--color-white);
+}
+
+.link[data-active="true"]::after,
+.link:hover::after,
+.link:focus-visible::after {
+    opacity: 1;
+}
+
+.contacts {
+    display: flex;
+    gap: 30px;
+    grid-area: contacts;
+}
+
+.contacts a {
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.copy {
+    color: #4e4e4e;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+    grid-area: copy;
+    z-index: 5;
+}
+
+.contacts a {
+    transition: color 180ms ease;
+}
+
+.contacts a:hover,
+.contacts a:focus-visible {
+    color: var(--color-accent);
+}
+
+.social {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: social;
+}
+
+.social img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+@media (max-width: 767px) {
+    .inner {
+        padding-bottom: 60px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "logo"
+            "nav"
+            "social"
+            "contacts"
+            "copy";
+        row-gap: 0;
+    }
+
+    .pixelsFooter {
+        right: 0;
+        bottom: 0;
+        width: 120px;
+    }
+
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        row-gap: 30px;
+        margin-top: 30px;
+    }
+
+    .link {
+        font-size: 18px;
+    }
+
+    .social {
+        justify-content: flex-start;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .contacts {
+        gap: 30px;
+        margin-top: 60px;
+    }
+
+    .copy {
+        width: 250px;
+        margin-top: 30px;
+        white-space: normal;
+    }
+}
+
+

@@ -1,0 +1,260 @@
+.siteHeader {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    width: min(100% - 40px, var(--container-width));
+    padding: 60px 0 0;
+}
+
+.logo {
+    display: block;
+    width: 220px;
+    min-width: 220px;
+    height: 31px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.link {
+    position: relative;
+    display: inline-flex;
+    padding-bottom: 5px;
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    transition: color var(--duration-base, 180ms) ease;
+}
+
+.link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: currentColor;
+    content: "";
+    opacity: 0;
+    transition: opacity var(--duration-base, 180ms) ease;
+}
+
+.link[data-active="true"] {
+    color: var(--color-accent);
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--color-white);
+}
+
+.link[data-active="true"]::after,
+.link:hover::after,
+.link:focus-visible::after {
+    opacity: 1;
+}
+
+.menuButton,
+.mobileMenuClose {
+    display: grid;
+    place-items: center;
+}
+
+.menuButton {
+    display: none;
+}
+
+
+.stickyHeader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    background: #252525;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition:
+        opacity var(--duration-base, 180ms) ease,
+        transform var(--duration-base, 180ms) ease;
+}
+
+.stickyHeaderVisible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.stickyInner {
+    display: flex;
+    width: min(100% - 40px, var(--container-width));
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stickyLogo {
+    width: 220px;
+    min-width: 220px;
+}
+
+.stickyNav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.stickyMenuButton {
+    display: none;
+}
+
+.mobileMenu {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: none;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 48px 20px 120px;
+    color: var(--color-dark);
+    background: var(--color-white);
+}
+
+.mobileMenuClose {
+    align-self: flex-end;
+}
+
+.mobileMenuBody {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(32px, 6vh, 56px);
+    padding-top: clamp(36px, 6.4vh, 52px);
+}
+
+.mobileMenuNav {
+    display: flex;
+    width: 95px;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: clamp(56px, 10vh, 88px);
+    align-items: center;
+}
+
+.mobileMenuGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.mobileMenuNav .link {
+    color: var(--color-dark);
+}
+
+.mobileMenuNav .link[data-active="true"] {
+    color: var(--color-accent);
+}
+
+.mobileMenuNav .link:hover,
+.mobileMenuNav .link:focus-visible {
+    color: var(--color-dark);
+}
+
+.mobileMenuSocial {
+    display: flex;
+    width: 186px;
+    margin: 0 auto;
+    gap: 30px;
+    align-items: center;
+}
+
+.mobileMenuSocial a {
+    display: grid;
+    place-items: center;
+    color: var(--color-dark);
+}
+
+.mobileMenuOpen {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+    .logo {
+        min-width: 180px;
+        width: 180px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .inner {
+        padding-top: 50px;
+    }
+
+    .logo {
+        width: 130px;
+        min-width: 130px;
+        height: auto;
+    }
+
+    .navGroup {
+        display: none;
+    }
+
+    .menuButton {
+        display: grid;
+        width: 30px;
+        height: 13px;
+        margin-top: 5px;
+        margin-left: auto;
+    }
+
+    .stickyHeader {
+        padding: 22px 0;
+    }
+
+    .stickyLogo {
+        width: 130px;
+        min-width: 130px;
+        height: auto;
+    }
+
+    .stickyNav {
+        display: none;
+    }
+
+    .stickyMenuButton {
+        display: grid;
+        width: 30px;
+    }
+}
+
+
+
+

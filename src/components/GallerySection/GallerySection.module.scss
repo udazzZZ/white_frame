@@ -1,0 +1,229 @@
+.gallerySection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: visible;
+}
+
+.galleryInner {
+    position: relative;
+    display: flex;
+    gap: 30px;
+    box-sizing: border-box;
+    width: 1440px;
+    padding-right: 120px;
+}
+
+.mainImageWrap {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 910px;
+    width: 910px;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.mainImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.side {
+    position: relative;
+    min-height: 100%;
+    overflow: visible;
+}
+
+.thumbs {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 76px);
+    grid-template-rows: repeat(5, 76px);
+    align-items: start;
+    justify-items: start;
+}
+
+.thumb {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor:
+        url("/cursor.svg") 4 4,
+        pointer;
+}
+
+.thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 4px solid transparent;
+    pointer-events: none;
+}
+
+.thumb[data-active="true"]::after {
+    border-color: var(--color-accent);
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.thumb:nth-child(2) {
+    grid-column: 5;
+    grid-row: 1;
+}
+
+.thumb:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.thumb:nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.thumb:nth-child(5) {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.thumb:nth-child(6) {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.pixels {
+    position: absolute;
+    right: 0;
+    bottom: 380px;
+    z-index: 1;
+    width: 160px;
+    height: auto;
+    pointer-events: none;
+}
+
+.logo {
+    position: absolute;
+    right: 102px;
+    bottom: 400px;
+    z-index: 2;
+    min-width: 400px;
+    height: auto;
+    transform: rotate(270deg);
+    transform-origin: right bottom;
+}
+
+.arrow {
+    position: absolute;
+    bottom: 0;
+    left: 103px;
+    z-index: 2;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor:
+        url("/cursor.svg") 4 4,
+        pointer;
+}
+
+.arrow img {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1200px) {
+    .galleryInner {
+        width: 100%;
+        padding-right: 40px;
+    }
+
+    .mainImageWrap {
+        flex: 0 1 64vw;
+        width: 64vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .thumbs {
+        grid-template-columns: repeat(4, 56px);
+        grid-template-rows: repeat(5, 56px);
+    }
+
+    .thumb {
+        width: 56px;
+        height: 56px;
+    }
+
+    .logo {
+        right: 54px;
+        width: 220px;
+        min-width: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .galleryInner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 375px;
+        padding-right: 0;
+    }
+
+    .mainImageWrap {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .side {
+        min-height: 375px;
+    }
+
+    .thumbs {
+        display: grid;
+        grid-template-columns: repeat(5, 67px);
+        grid-template-rows: repeat(4, 67px);
+        height: auto;
+    }
+
+    .thumb,
+    .thumb:nth-child(n) {
+        width: 67px;
+        height: 67px;
+    }
+
+    .pixels {
+        display: none;
+    }
+
+    .logo {
+        right: 0;
+        bottom: 204px;
+        width: 204px;
+        min-width: 204px;
+    }
+
+    .arrow {
+        bottom: 0;
+        left: 215px;
+    }
+}

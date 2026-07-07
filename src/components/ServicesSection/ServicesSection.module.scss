@@ -1,0 +1,107 @@
+.servicesSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.servicesSection::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(100% - 60px);
+    background: rgba(0, 0, 0, 0.2);
+    content: "";
+    pointer-events: none;
+}
+
+.inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 60px 30px;
+    width: min(100% - 40px, var(--container-width));
+    min-height: 410px;
+    padding: 60px 0;
+}
+
+.serviceCard h2,
+.consultLink span {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.375;
+    letter-spacing: 0.02em;
+}
+
+.serviceCard h2 {
+    color: var(--color-accent);
+}
+
+.serviceCard p {
+    margin: 14px 0 0;
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.375;
+}
+
+.consultLink {
+    display: inline-flex;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-blue);
+}
+
+.consultLink img {
+    width: 40px;
+    height: 40px;
+}
+
+.contactButton {
+    width: 100%;
+    padding: 17px 53px;
+    align-self: end;
+    white-space: nowrap;
+}
+
+@media (max-width: 1399px) {
+    .servicesSection::before {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .servicesSection::before {
+        width: 100%;
+    }
+
+    .inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .servicesSection::before {
+        width: 100%;
+    }
+
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    .serviceCard {
+        margin-bottom: 10px;
+    }
+
+    .consultLink {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .consultLink img {
+        align-self: flex-end;
+        transform: rotate(90deg);
+    }
+}
