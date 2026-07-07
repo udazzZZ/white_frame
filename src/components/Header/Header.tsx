@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isStickyVisible, setIsStickyVisible] = useState(false);
+    const { pathname } = useLocation();
+    const isHomePage = pathname === "/";
+    const isContactsPage = pathname === "/contacts";
     const mobileMenuClassName = isMenuOpen
         ? `${styles.mobileMenu} ${styles.mobileMenuOpen}`
         : styles.mobileMenu;
@@ -41,33 +45,41 @@ export const Header = () => {
         <>
             <header className={styles.siteHeader}>
                 <div className={styles.inner}>
-                    <a
+                    <Link
                         className={styles.logo}
-                        href="#hero"
+                        to="/"
                         aria-label="White Frame"
                     >
                         <img src="/logo.svg" alt="" />
-                    </a>
+                    </Link>
 
                     <div className={styles.navGroup}>
-                        <a className={styles.link} data-active="true" href="#hero">
+                        <Link
+                            className={styles.link}
+                            data-active={isHomePage ? "true" : undefined}
+                            to="/"
+                        >
                             Главная
-                        </a>
-                        <a className={styles.link} href="#cases">
+                        </Link>
+                        <a className={styles.link} href="/#cases">
                             Кейсы
                         </a>
-                        <a className={styles.link} href="#services">
+                        <a className={styles.link} href="/#services">
                             Услуги
                         </a>
                     </div>
                     <div className={navGroupRightClassName}>
-                        <a className={styles.link} href="#contacts">
+                        <Link
+                            className={styles.link}
+                            data-active={isContactsPage ? "true" : undefined}
+                            to="/contacts"
+                        >
                             Контакты
-                        </a>
-                        <a className={styles.link} href="#vacancies">
+                        </Link>
+                        <a className={styles.link} href="/#vacancies">
                             Вакансии
                         </a>
-                        <a className={styles.link} href="#news">
+                        <a className={styles.link} href="/#news">
                             Новости
                         </a>
                     </div>
@@ -87,34 +99,42 @@ export const Header = () => {
 
             <header className={stickyHeaderClassName}>
                 <div className={styles.stickyInner}>
-                    <a
+                    <Link
                         className={styles.stickyLogo}
-                        href="#hero"
+                        to="/"
                         aria-label="White Frame"
                     >
                         <img src="/logo.svg" alt="" />
-                    </a>
+                    </Link>
 
                     <nav className={styles.stickyNav} aria-label="Навигация">
-                        <a className={styles.link} data-active="true" href="#hero">
+                        <Link
+                            className={styles.link}
+                            data-active={isHomePage ? "true" : undefined}
+                            to="/"
+                        >
                             Главная
-                        </a>
-                        <a className={styles.link} href="#cases">
+                        </Link>
+                        <a className={styles.link} href="/#cases">
                             Кейсы
                         </a>
-                        <a className={styles.link} href="#services">
+                        <a className={styles.link} href="/#services">
                             Услуги
                         </a>
                     </nav>
 
                     <nav className={styles.stickyNav} aria-label="Дополнительная навигация">
-                        <a className={styles.link} href="#contacts">
+                        <Link
+                            className={styles.link}
+                            data-active={isContactsPage ? "true" : undefined}
+                            to="/contacts"
+                        >
                             Контакты
-                        </a>
-                        <a className={styles.link} href="#vacancies">
+                        </Link>
+                        <a className={styles.link} href="/#vacancies">
                             Вакансии
                         </a>
-                        <a className={styles.link} href="#news">
+                        <a className={styles.link} href="/#news">
                             Новости
                         </a>
                     </nav>
@@ -148,47 +168,48 @@ export const Header = () => {
                         aria-label="Мобильная навигация"
                     >
                         <div className={styles.mobileMenuGroup}>
-                            <a
+                            <Link
                                 className={styles.link}
-                                data-active="true"
-                                href="#hero"
+                                data-active={isHomePage ? "true" : undefined}
+                                to="/"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Главная
-                            </a>
+                            </Link>
                             <a
                                 className={styles.link}
-                                href="#cases"
+                                href="/#cases"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Кейсы
                             </a>
                             <a
                                 className={styles.link}
-                                href="#services"
+                                href="/#services"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Услуги
                             </a>
                         </div>
                         <div className={styles.mobileMenuGroup}>
-                            <a
+                            <Link
                                 className={styles.link}
-                                href="#contacts"
+                                data-active={isContactsPage ? "true" : undefined}
+                                to="/contacts"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Контакты
-                            </a>
+                            </Link>
                             <a
                                 className={styles.link}
-                                href="#vacancies"
+                                href="/#vacancies"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Вакансии
                             </a>
                             <a
                                 className={styles.link}
-                                href="#news"
+                                href="/#news"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Новости
@@ -226,4 +247,3 @@ export const Header = () => {
         </>
     );
 };
-

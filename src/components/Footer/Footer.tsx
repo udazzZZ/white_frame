@@ -1,6 +1,11 @@
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+    const { pathname } = useLocation();
+    const isHomePage = pathname === "/";
+    const isContactsPage = pathname === "/contacts";
+
     return (
         <footer className={styles.siteFooter}>
             <div className={styles.inner}>
@@ -10,31 +15,39 @@ export const Footer = () => {
                     alt=""
                     aria-hidden="true"
                 />
-                <a
+                <Link
                     className={styles.logo}
-                    href="#hero"
+                    to="/"
                     aria-label="White Frame"
                 >
                     <img src="/footer-logo.svg" alt="" />
-                </a>
+                </Link>
 
                 <nav className={styles.nav} aria-label="Навигация в футере">
-                    <a className={styles.link} data-active="true" href="#hero">
+                    <Link
+                        className={styles.link}
+                        data-active={isHomePage ? "true" : undefined}
+                        to="/"
+                    >
                         Главная
-                    </a>
-                    <a className={styles.link} href="#cases">
+                    </Link>
+                    <a className={styles.link} href="/#cases">
                         Кейсы
                     </a>
-                    <a className={styles.link} href="#services">
+                    <a className={styles.link} href="/#services">
                         Услуги
                     </a>
-                    <a className={styles.link} href="#contacts">
+                    <Link
+                        className={styles.link}
+                        data-active={isContactsPage ? "true" : undefined}
+                        to="/contacts"
+                    >
                         Контакты
-                    </a>
-                    <a className={styles.link} href="#vacancies">
+                    </Link>
+                    <a className={styles.link} href="/#vacancies">
                         Вакансии
                     </a>
-                    <a className={styles.link} href="#news">
+                    <a className={styles.link} href="/#news">
                         Новости
                     </a>
                 </nav>

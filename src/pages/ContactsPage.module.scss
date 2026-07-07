@@ -1,0 +1,250 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    color: var(--color-white);
+    background: var(--color-dark);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    padding-top: 217px;
+}
+
+.contactsSection {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    max-width: min(100% - 40px, var(--container-width));
+    grid-template-columns: 73px 380px 1fr 277px;
+    grid-template-areas:
+        "intro intro info phone"
+        "arrow form form form";
+    justify-content: space-between;
+    row-gap: 120px;
+    column-gap: 30px;
+}
+
+.intro {
+    grid-area: intro;
+}
+
+.intro p {
+    width: 380px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.intro span {
+    color: var(--color-accent);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: info;
+}
+
+.info a,
+.phone {
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 180ms ease;
+}
+
+.info a:hover,
+.info a:focus-visible,
+.phone:hover,
+.phone:focus-visible,
+.social a:hover,
+.social a:focus-visible {
+    color: var(--color-accent);
+}
+
+.info p {
+    color: #4e4e4e;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.phone {
+    align-self: end;
+    grid-area: phone;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    grid-area: arrow;
+}
+
+.form {
+    width: 100%;
+    grid-area: form;
+}
+
+.contactsFooter {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 120px 0 60px;
+}
+
+.footerInner {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    position: relative;
+    z-index: 1;
+    width: min(100% - 40px, var(--container-width));
+}
+
+.social {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.social a {
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 180ms ease;
+}
+
+.social a[data-active="true"] {
+    color: var(--color-accent);
+}
+
+.copy {
+    color: #4e4e4e;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.pixelsTop,
+.pixelsBottom,
+.pixelsLeft {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pixelsTop {
+    top: 0;
+    right: 260px;
+    width: 240px;
+}
+
+.pixelsBottom {
+    right: 362px;
+    bottom: 0;
+    width: 240px;
+}
+
+.pixelsLeft {
+    top: 309px;
+    left: 0;
+    width: 160px;
+}
+
+@media (max-width: 1024px) {
+    .contactsSection {
+        grid-template-columns: 73px 250px 1fr 200px;
+    }
+
+    .intro p {
+        font-size: 20px;
+    }
+
+    .phone,
+    .info a,
+    .info p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main {
+        padding-top: 130px;
+    }
+
+    .contactsSection {
+        width: min(100% - 40px, var(--container-width));
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "intro"
+            "arrow"
+            "form"
+            "info"
+            "phone";
+        gap: 20px;
+    }
+
+    .arrow {
+        rotate: 90deg;
+    }
+
+    .intro p {
+        width: 100%;
+        font-size: 24px;
+    }
+
+    .phone,
+    .info a,
+    .info p {
+        font-size: 24px;
+    }
+
+    .intro {
+        margin-bottom: 60px;
+    }
+
+    .form {
+        margin-bottom: 100px;
+    }
+
+    .info {
+        gap: 30px;
+        margin-bottom: 15px;
+    }
+
+    .contactsFooter {
+        padding: 0 0 60px;
+    }
+
+    .footerInner {
+        gap: 60px;
+    }
+
+    .social {
+        grid-template-columns: 1fr;
+    }
+
+    .pixelsTop {
+        rotate: -90deg;
+        left: 0;
+        width: 120px;
+    }
+
+    .pixelsBottom {
+        width: 120px;
+        right: 20px;
+        bottom: 0;
+    }
+
+    .pixelsLeft {
+        width: 80px;
+    }
+}
