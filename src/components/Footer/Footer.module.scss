@@ -25,6 +25,7 @@
     bottom: 0;
     width: 240px;
     height: auto;
+    z-index: 0;
 }
 
 .logo {
@@ -93,6 +94,7 @@
     font-weight: 400;
     line-height: 1.35;
     grid-area: copy;
+    z-index: 5;
 }
 
 .contacts a {

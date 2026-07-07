@@ -37,19 +37,22 @@
 }
 
 .lead {
-    margin: 0;
+    position: relative;
     color: var(--color-white);
     font-size: 24px;
     font-weight: 700;
     line-height: 1.375;
     letter-spacing: 0.02em;
+    z-index: 10;
 }
 
 .text {
+    position: relative;
     color: var(--color-white);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.375;
+    z-index: 10;
 }
 
 .text p {

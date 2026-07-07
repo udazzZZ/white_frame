@@ -5,9 +5,10 @@
 }
 
 html {
-    min-width: 100%;
+    min-width: 100vw;
     scroll-behavior: smooth;
     text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 body {

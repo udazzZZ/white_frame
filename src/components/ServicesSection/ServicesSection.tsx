@@ -1,7 +1,11 @@
 import { Button } from "../Button/Button";
 import styles from "./ServicesSection.module.scss";
 
-export const ServicesSection = () => {
+type ServicesSectionProps = {
+    onContactClick: () => void;
+};
+
+export const ServicesSection = ({ onContactClick }: ServicesSectionProps) => {
     return (
         <section className={styles.servicesSection} id="services">
             <div className={styles.inner}>
@@ -58,7 +62,7 @@ export const ServicesSection = () => {
                     <img src="/arrow-right.svg" alt="" />
                 </div>
 
-                <Button className={styles.contactButton} href="#contacts">
+                <Button className={styles.contactButton} onClick={onContactClick}>
                     Свяжитесь с нами
                 </Button>
             </div>
