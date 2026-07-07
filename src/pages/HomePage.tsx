@@ -5,6 +5,7 @@ import { CasesSection } from "../components/CasesSection/CasesSection";
 import { AboutSection } from "../components/AboutSection/AboutSection";
 import { GallerySection } from "../components/GallerySection/GallerySection";
 import { NewsSection } from "../components/NewsSection/NewsSection";
+import { Footer } from "../components/Footer/Footer";
 import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
@@ -20,6 +21,9 @@ export const HomePage = () => {
                 <GallerySection />
                 <NewsSection />
             </main>
+
+            <Footer />
         </div>
     );
 };
+
