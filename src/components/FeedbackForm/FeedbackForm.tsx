@@ -1,6 +1,8 @@
-import { useForm, useWatch, type SubmitHandler } from "react-hook-form";
+/* eslint-disable react-hooks/incompatible-library */
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Button } from "../Button/Button";
 import styles from "./FeedbackForm.module.scss";
+import clsx from "clsx";
 
 export type FeedbackFormValues = {
     name: string;
@@ -24,11 +26,11 @@ export const FeedbackForm = ({
     theme = "accent",
 }: FeedbackFormProps) => {
     const {
-        control,
         formState: { isSubmitting },
         handleSubmit,
         register,
         reset,
+        watch,
     } = useForm<FeedbackFormValues>({
         defaultValues: {
             name: "",
@@ -37,61 +39,49 @@ export const FeedbackForm = ({
         },
     });
 
-    const [nameValue, phoneValue, commentValue] = useWatch({
-        control,
-        name: ["name", "phone", "comment"],
-    });
-
-    const nameClassName = [
-        styles.field,
-        styles.nameField,
-        nameValue && styles.fieldFilled,
-    ]
-        .filter(Boolean)
-        .join(" ");
-    const phoneClassName = [
-        styles.field,
-        styles.phoneField,
-        phoneValue && styles.phoneFilled,
-        phoneValue && styles[phoneFilledVariant],
-    ]
-        .filter(Boolean)
-        .join(" ");
-    const commentClassName = [
-        styles.field,
-        styles.comment,
-        commentValue && styles.fieldFilled,
-    ]
-        .filter(Boolean)
-        .join(" ");
+    const nameValue = watch("name");
+    const phoneValue = watch("phone");
+    const commentValue = watch("comment");
 
     const submitForm: SubmitHandler<FeedbackFormValues> = async (data) => {
         await onSubmit(data);
         reset();
     };
 
-    const formClassName = [styles.form, styles[theme], className]
-        .filter(Boolean)
-        .join(" ");
-
     return (
-        <form className={formClassName} onSubmit={handleSubmit(submitForm)}>
+        <form
+            className={clsx(styles.form, styles[theme], className)}
+            onSubmit={handleSubmit(submitForm)}
+        >
             <input
-                className={nameClassName}
+                className={clsx(
+                    styles.field,
+                    styles.nameField,
+                    nameValue && styles.fieldFilled,
+                )}
                 type="text"
                 placeholder="Константин"
                 aria-label="Имя"
                 {...register("name", { required: true })}
             />
             <input
-                className={phoneClassName}
+                className={clsx(
+                    styles.field,
+                    styles.phoneField,
+                    phoneValue && styles.phoneFilled,
+                    phoneValue && styles[phoneFilledVariant],
+                )}
                 type="tel"
                 placeholder="+7 917 123 45 67"
                 aria-label="Телефон"
                 {...register("phone", { required: true })}
             />
             <textarea
-                className={commentClassName}
+                className={clsx(
+                    styles.field,
+                    styles.comment,
+                    commentValue && styles.fieldFilled,
+                )}
                 placeholder="Комментарий"
                 aria-label="Комментарий"
                 {...register("comment")}

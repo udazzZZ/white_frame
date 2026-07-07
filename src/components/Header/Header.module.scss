@@ -52,14 +52,21 @@
     background: currentColor;
     content: "";
     opacity: 0;
+    transition: opacity var(--duration-base, 180ms) ease;
 }
 
-.link[data-active="true"],
-.link:hover {
+.link[data-active="true"] {
     color: var(--color-accent);
 }
 
-.link[data-active="true"]::after {
+.link:hover,
+.link:focus-visible {
+    color: var(--color-white);
+}
+
+.link[data-active="true"]::after,
+.link:hover::after,
+.link:focus-visible::after {
     opacity: 1;
 }
 
@@ -119,9 +126,13 @@
     color: var(--color-dark);
 }
 
-.mobileMenuNav .link[data-active="true"],
-.mobileMenuNav .link:hover {
+.mobileMenuNav .link[data-active="true"] {
     color: var(--color-accent);
+}
+
+.mobileMenuNav .link:hover,
+.mobileMenuNav .link:focus-visible {
+    color: var(--color-dark);
 }
 
 .mobileMenuSocial {
@@ -177,3 +188,5 @@
         margin-left: auto;
     }
 }
+
+

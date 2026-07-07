@@ -41,7 +41,11 @@
 .closeIcon {
     width: 20px;
     height: 20px;
-    transition: opacity 180ms ease;
+}
+
+.closeButton:hover .closeIcon,
+.closeButton:focus-visible .closeIcon {
+    content: url("/close-icon-hover.svg");
 }
 
 .arrow {
@@ -124,5 +128,6 @@
         width: 100%;
     }
 }
+
 
 
