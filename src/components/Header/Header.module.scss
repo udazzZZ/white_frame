@@ -80,6 +80,53 @@
     display: none;
 }
 
+
+.stickyHeader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    background: #252525;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition:
+        opacity var(--duration-base, 180ms) ease,
+        transform var(--duration-base, 180ms) ease;
+}
+
+.stickyHeaderVisible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.stickyInner {
+    display: flex;
+    width: min(100% - 40px, var(--container-width));
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stickyLogo {
+    width: 220px;
+    min-width: 220px;
+}
+
+.stickyNav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.stickyMenuButton {
+    display: none;
+}
+
 .mobileMenu {
     position: fixed;
     inset: 0;
@@ -187,6 +234,27 @@
         margin-top: 5px;
         margin-left: auto;
     }
+
+    .stickyHeader {
+        padding: 22px 0;
+    }
+
+    .stickyLogo {
+        width: 130px;
+        min-width: 130px;
+        height: auto;
+    }
+
+    .stickyNav {
+        display: none;
+    }
+
+    .stickyMenuButton {
+        display: grid;
+        width: 30px;
+    }
 }
+
+
 
 

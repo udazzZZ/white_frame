@@ -3,9 +3,13 @@ import styles from "./Header.module.scss";
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isStickyVisible, setIsStickyVisible] = useState(false);
     const mobileMenuClassName = isMenuOpen
         ? `${styles.mobileMenu} ${styles.mobileMenuOpen}`
         : styles.mobileMenu;
+    const stickyHeaderClassName = isStickyVisible
+        ? `${styles.stickyHeader} ${styles.stickyHeaderVisible}`
+        : styles.stickyHeader;
     const navGroupRightClassName = `${styles.navGroup} ${styles.navGroupRight}`;
 
     useEffect(() => {
@@ -14,51 +18,119 @@ export const Header = () => {
         return () => document.body.classList.remove("is-menu-open");
     }, [isMenuOpen]);
 
+    useEffect(() => {
+        let previousScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            const isScrollingUp = currentScrollY < previousScrollY;
+            const isPastMainHeader = currentScrollY > 180;
+
+            setIsStickyVisible(isScrollingUp && isPastMainHeader);
+            previousScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <header className={styles.siteHeader}>
-            <div className={styles.inner}>
-                <a
-                    className={styles.logo}
-                    href="#hero"
-                    aria-label="White Frame"
-                >
-                    <img src="/logo.svg" alt="" />
-                </a>
+        <>
+            <header className={styles.siteHeader}>
+                <div className={styles.inner}>
+                    <a
+                        className={styles.logo}
+                        href="#hero"
+                        aria-label="White Frame"
+                    >
+                        <img src="/logo.svg" alt="" />
+                    </a>
 
-                <div className={styles.navGroup}>
-                    <a className={styles.link} data-active="true" href="#hero">
-                        Главная
-                    </a>
-                    <a className={styles.link} href="#cases">
-                        Кейсы
-                    </a>
-                    <a className={styles.link} href="#services">
-                        Услуги
-                    </a>
-                </div>
-                <div className={navGroupRightClassName}>
-                    <a className={styles.link} href="#contacts">
-                        Контакты
-                    </a>
-                    <a className={styles.link} href="#vacancies">
-                        Вакансии
-                    </a>
-                    <a className={styles.link} href="#news">
-                        Новости
-                    </a>
-                </div>
+                    <div className={styles.navGroup}>
+                        <a className={styles.link} data-active="true" href="#hero">
+                            Главная
+                        </a>
+                        <a className={styles.link} href="#cases">
+                            Кейсы
+                        </a>
+                        <a className={styles.link} href="#services">
+                            Услуги
+                        </a>
+                    </div>
+                    <div className={navGroupRightClassName}>
+                        <a className={styles.link} href="#contacts">
+                            Контакты
+                        </a>
+                        <a className={styles.link} href="#vacancies">
+                            Вакансии
+                        </a>
+                        <a className={styles.link} href="#news">
+                            Новости
+                        </a>
+                    </div>
 
-                <button
-                    className={styles.menuButton}
-                    type="button"
-                    aria-controls="mobile-menu"
-                    aria-expanded={isMenuOpen}
-                    aria-label="Открыть меню"
-                    onClick={() => setIsMenuOpen(true)}
-                >
-                    <img src="/menu-icon.svg" alt="" />
-                </button>
-            </div>
+                    <button
+                        className={styles.menuButton}
+                        type="button"
+                        aria-controls="mobile-menu"
+                        aria-expanded={isMenuOpen}
+                        aria-label="Открыть меню"
+                        onClick={() => setIsMenuOpen(true)}
+                    >
+                        <img src="/menu-icon.svg" alt="" />
+                    </button>
+                </div>
+            </header>
+
+            <header className={stickyHeaderClassName}>
+                <div className={styles.stickyInner}>
+                    <a
+                        className={styles.stickyLogo}
+                        href="#hero"
+                        aria-label="White Frame"
+                    >
+                        <img src="/logo.svg" alt="" />
+                    </a>
+
+                    <nav className={styles.stickyNav} aria-label="Навигация">
+                        <a className={styles.link} data-active="true" href="#hero">
+                            Главная
+                        </a>
+                        <a className={styles.link} href="#cases">
+                            Кейсы
+                        </a>
+                        <a className={styles.link} href="#services">
+                            Услуги
+                        </a>
+                    </nav>
+
+                    <nav className={styles.stickyNav} aria-label="Дополнительная навигация">
+                        <a className={styles.link} href="#contacts">
+                            Контакты
+                        </a>
+                        <a className={styles.link} href="#vacancies">
+                            Вакансии
+                        </a>
+                        <a className={styles.link} href="#news">
+                            Новости
+                        </a>
+                    </nav>
+
+                    <button
+                        className={styles.stickyMenuButton}
+                        type="button"
+                        aria-controls="mobile-menu"
+                        aria-expanded={isMenuOpen}
+                        aria-label="Открыть меню"
+                        onClick={() => setIsMenuOpen(true)}
+                    >
+                        <img src="/menu-icon.svg" alt="" />
+                    </button>
+                </div>
+            </header>
 
             <div className={mobileMenuClassName} id="mobile-menu">
                 <button
@@ -151,6 +223,7 @@ export const Header = () => {
                     </ul>
                 </div>
             </div>
-        </header>
+        </>
     );
 };
+
